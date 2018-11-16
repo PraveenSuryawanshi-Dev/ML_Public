@@ -1,1 +1,1 @@
-Assignment_1 : Design of Simple Neural Network in C++
+Assignment_1 : Design of Simple Neural Network in C++ by millermatson
