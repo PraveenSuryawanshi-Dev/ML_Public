@@ -20,6 +20,8 @@ namespace NeuralNetwork
 
 		void FeedForward();
 
+		void SetLearningRateETA(double x);
+
 		void BackPropagation(double target);
 
 		~Network();
@@ -27,6 +29,8 @@ namespace NeuralNetwork
 	private:
 
 		std::vector<Layer*> _m_Layers;
+
+		double _m_learnigRate;
 	};
 }
 

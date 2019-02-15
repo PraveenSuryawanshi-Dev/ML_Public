@@ -34,6 +34,8 @@ namespace NeuralNetwork
 
 		void BackPropagation(double expected, NeuralNetwork::Layer *previousLayer);
 
+		bool IsBiasNeuron();
+
 		size_t Size();
 
 		NeuralNetwork::Neuron *GetNeuron(int which);

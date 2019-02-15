@@ -14,6 +14,7 @@ namespace NeuralNetwork
 		RELU,
 		SIGMOID,
 		HYPERBOLIC_TANGENT,
+
 	}ACTIVATION_TYPE;
 
 

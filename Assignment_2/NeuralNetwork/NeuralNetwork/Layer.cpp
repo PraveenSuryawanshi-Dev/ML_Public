@@ -21,7 +21,7 @@ void NeuralNetwork::Layer::Build()
 
 	for (size_t i = 0; i < length; i++)
 	{
-		Neuron *neuron =new  Neuron(_m_activationType, _m_inTotalNeuronsNextLayer);
+		Neuron *neuron = new  Neuron(_m_activationType, _m_inTotalNeuronsNextLayer);
 		
 		neuron->Build();
 
@@ -50,6 +50,11 @@ void NeuralNetwork::Layer::BackPropagation(double expected, NeuralNetwork::Layer
 	{
 		_m_Neurons[i]->BackPropagation(previousLayer, expected);
 	}
+}
+
+bool NeuralNetwork::Layer::IsBiasNeuron()
+{
+	return _m_isBiasNeeded;
 }
 
 size_t NeuralNetwork::Layer::Size()

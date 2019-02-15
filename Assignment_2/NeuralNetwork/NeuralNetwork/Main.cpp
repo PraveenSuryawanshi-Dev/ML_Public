@@ -22,7 +22,11 @@ int main()
 	network.Add(hidden_Layer1);
 
 	network.Add(output_Layer);
+
 	
+	network.SetLearningRateETA(0.5);
+
+
 
 	NeuralNetwork::TENSOR_DIMENSION dimension{ 2,1,0 };
 

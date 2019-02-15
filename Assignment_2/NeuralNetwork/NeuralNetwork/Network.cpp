@@ -1,10 +1,12 @@
 #include "Network.hpp"
 
 #define INPUT_LAYER 0
+
 #define FIRST_HIDDEN_LAYER 1
 
 NeuralNetwork::Network::Network()
 {
+	_m_learnigRate = 0.0;
 }
 
 void NeuralNetwork::Network::Add(NeuralNetwork::Layer *layer)
@@ -38,6 +40,11 @@ void NeuralNetwork::Network::FeedForward()
 
 		_m_Layers[i]->FeedForward(previousLayer);
 	}
+}
+
+void NeuralNetwork::Network::SetLearningRateETA(double x)
+{
+	_m_learnigRate = x;
 }
 
 void NeuralNetwork::Network::BackPropagation(double target)
