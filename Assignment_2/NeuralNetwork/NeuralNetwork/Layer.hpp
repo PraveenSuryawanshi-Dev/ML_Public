@@ -32,6 +32,8 @@ namespace NeuralNetwork
 
 		void FeedForward(NeuralNetwork::Layer *previousLayer);
 
+		void BackPropagation(double expected, NeuralNetwork::Layer *previousLayer);
+
 		size_t Size();
 
 		NeuralNetwork::Neuron *GetNeuron(int which);

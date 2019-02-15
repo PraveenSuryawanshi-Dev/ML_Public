@@ -42,6 +42,14 @@ void NeuralNetwork::Network::FeedForward()
 
 void NeuralNetwork::Network::BackPropagation(double target)
 {
+	int lastLayer = _m_Layers.size();
+
+	for (size_t i = lastLayer; i > 0; i--)
+	{
+		Layer *previousLayer = _m_Layers[i - 1];
+
+		_m_Layers[i]->BackPropagation(target,previousLayer);
+	}
 }
 
 NeuralNetwork::Network::~Network()

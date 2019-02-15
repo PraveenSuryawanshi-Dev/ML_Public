@@ -44,6 +44,14 @@ void NeuralNetwork::Layer::FeedForward(NeuralNetwork::Layer *previousLayer)
 	}
 }
 
+void NeuralNetwork::Layer::BackPropagation(double expected, NeuralNetwork::Layer * previousLayer)
+{
+	for (size_t i = 0; i < _m_Neurons.size(); i++)
+	{
+		_m_Neurons[i]->BackPropagation(previousLayer, expected);
+	}
+}
+
 size_t NeuralNetwork::Layer::Size()
 {
 	return _m_Neurons.size();

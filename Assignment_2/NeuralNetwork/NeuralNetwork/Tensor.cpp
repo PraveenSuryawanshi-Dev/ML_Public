@@ -3,6 +3,7 @@
 NeuralNetwork::Tensor::Tensor(TENSOR_DIMENSION dimension)
 {
 	_m_dimension = dimension;
+
 }
 
 NeuralNetwork::TENSOR_DIMENSION NeuralNetwork::Tensor::GetDimension()

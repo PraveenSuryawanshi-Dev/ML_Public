@@ -29,7 +29,7 @@ namespace NeuralNetwork
 
 		TENSOR_DIMENSION _m_dimension;
 
-		std::vector < std::vector<std::vector<double>>> _m_data;
+		std::vector<std::vector<std::vector<double>>> _m_data;
 	};
 }
 
