@@ -17,28 +17,25 @@ void NeuralNetwork::Network::Add(NeuralNetwork::Layer *layer)
 
 }
 
-void NeuralNetwork::Network::LatchInput(Tensor & tensor)
+void NeuralNetwork::Network::LatchInput(Tensor &tensor)
 {
 	NeuralNetwork::TENSOR_DIMENSION dimension = tensor.GetDimension();
 
 	for (size_t i = 0; i < dimension.x; i++)
 	{
-		for (size_t j = 0; j < dimension.y; j++)
-		{
-			double data = tensor.GetValue(TENSOR_DIMENSION{i,j,0});
+		double data = tensor.GetValue(TENSOR_DIMENSION{ i,0,0 });
 
-			_m_Layers[INPUT_LAYER]->LatchInput(i,data);
-		}
+		_m_Layers[INPUT_LAYER]->LatchInput(i, data);
 	}
 }
 
 void NeuralNetwork::Network::FeedForward()
 {
-	for (size_t i = FIRST_HIDDEN_LAYER; i < _m_Layers.size(); i++)
+	for (size_t LayersIndex = FIRST_HIDDEN_LAYER; LayersIndex < _m_Layers.size(); LayersIndex++)
 	{
-		Layer *previousLayer = _m_Layers[i - 1];
+		Layer *previousLayer = _m_Layers[LayersIndex - 1];
 
-		_m_Layers[i]->FeedForward(previousLayer);
+		_m_Layers[LayersIndex]->FeedForward(previousLayer);
 	}
 }
 
@@ -47,15 +44,24 @@ void NeuralNetwork::Network::SetLearningRateETA(double x)
 	_m_learnigRate = x;
 }
 
-void NeuralNetwork::Network::BackPropagation(double target)
+void NeuralNetwork::Network::BackPropagation(Tensor &tensor)
 {
 	int lastLayer = _m_Layers.size();
 
-	for (size_t i = lastLayer; i > 0; i--)
-	{
-		Layer *previousLayer = _m_Layers[i - 1];
+	_m_Layers[lastLayer]->CalculateTotalError(tensor);
 
-		_m_Layers[i]->BackPropagation(target,previousLayer);
+	for (size_t LayersIndex = lastLayer; LayersIndex > 0; LayersIndex--)
+	{
+		Layer *previousLayer = _m_Layers[LayersIndex - 1];
+
+		_m_Layers[LayersIndex]->BackPropagation(previousLayer,tensor, _m_learnigRate);
+	}
+
+
+
+	for (size_t LayersIndex = FIRST_HIDDEN_LAYER; LayersIndex < _m_Layers.size(); LayersIndex++)
+	{
+		_m_Layers[LayersIndex]->UpdateWeights();
 	}
 }
 

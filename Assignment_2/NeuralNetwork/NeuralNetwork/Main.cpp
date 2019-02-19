@@ -4,6 +4,7 @@
 #include "Tensor.hpp"
 
 //https://stevenmiller888.github.io/mind-how-to-build-a-neural-network/
+//https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
 
 int main()
 {
@@ -27,10 +28,10 @@ int main()
 	network.SetLearningRateETA(0.5);
 
 
+	NeuralNetwork::Tensor InputTensor(NeuralNetwork::TENSOR_DIMENSION{ 3,3,1 });
 
-	NeuralNetwork::TENSOR_DIMENSION dimension{ 2,1,0 };
+	NeuralNetwork::Tensor OutTensor(NeuralNetwork::TENSOR_DIMENSION{ 1,1,1 });
 
-	NeuralNetwork::Tensor InputTensor(dimension);
 
 	while (true)
 	{
@@ -38,7 +39,7 @@ int main()
 
 		network.FeedForward();
 
-		network.BackPropagation(1.0);
+		network.BackPropagation(OutTensor);
 	}
 	
 	return 1;

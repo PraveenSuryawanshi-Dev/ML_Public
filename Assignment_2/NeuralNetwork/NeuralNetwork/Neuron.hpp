@@ -21,7 +21,19 @@ namespace NeuralNetwork
 
 		void FeedForward(Layer *previousLayer, ACTIVATION_TYPE activationType);
 
-		void BackPropagation(Layer *previousLayer, double expected);
+		void CalculateTotalError(double expected);
+
+		double GetTotalError();
+		
+		double GetWeight(int index);
+
+		double GetOutput();
+
+		size_t GetWeightSize();
+
+		void SetWeight(int index, double weight);
+
+		void UpdateWeights();
 
 		~Neuron();
 
@@ -31,13 +43,15 @@ namespace NeuralNetwork
 
 		double _m_output_sum;
 
-		double _m_error;
+		double _m_SquareError;
 
 		unsigned int _m_iTotalNeuronNextLayer;
 
 		std::vector<double> _m_Weights;
 
-		static double _m_totatl_error;
+		std::vector<double> _m_TempWeights;
+
+		static double _m_totatl_SquareError;
 
 	};
 }

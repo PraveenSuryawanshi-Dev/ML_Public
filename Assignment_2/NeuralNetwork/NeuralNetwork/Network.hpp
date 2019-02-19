@@ -22,7 +22,7 @@ namespace NeuralNetwork
 
 		void SetLearningRateETA(double x);
 
-		void BackPropagation(double target);
+		void BackPropagation(Tensor &tensor);
 
 		~Network();
 

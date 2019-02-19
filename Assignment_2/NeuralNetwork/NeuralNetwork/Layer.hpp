@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <vector>
 #include "Activation.hpp"
-
+#include "Tensor.hpp"
 
 namespace NeuralNetwork
 {
@@ -32,13 +32,17 @@ namespace NeuralNetwork
 
 		void FeedForward(NeuralNetwork::Layer *previousLayer);
 
-		void BackPropagation(double expected, NeuralNetwork::Layer *previousLayer);
+		void CalculateTotalError(Tensor &tensor);
+
+		void BackPropagation(NeuralNetwork::Layer *previousLayer, Tensor &tensor ,double learningRate);
 
 		bool IsBiasNeuron();
 
 		size_t Size();
 
 		NeuralNetwork::Neuron *GetNeuron(int which);
+
+		void UpdateWeights();
 
 		~Layer();
 
