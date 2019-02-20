@@ -27,7 +27,8 @@ int main()
 	
 	network.SetLearningRateETA(0.5);
 
-	NeuralNetwork::Tensor InputTensor(NeuralNetwork::TENSOR_DIMENSION{ 3,3,1 });
+	NeuralNetwork::Tensor InputTensor(NeuralNetwork::TENSOR_DIMENSION{ 2,1,1 });
+
 	NeuralNetwork::Tensor OutTensor(NeuralNetwork::TENSOR_DIMENSION{ 1,1,1 });
 
 

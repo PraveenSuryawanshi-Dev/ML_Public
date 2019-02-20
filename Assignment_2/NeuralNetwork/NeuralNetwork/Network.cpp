@@ -47,7 +47,7 @@ void NeuralNetwork::Network::SetLearningRateETA(double x)
 
 void NeuralNetwork::Network::BackPropagation(Tensor &tensor)
 {
-	int lastLayer = _m_Layers.size();
+	int lastLayer = _m_Layers.size()-1;
 
 	_m_Layers[lastLayer]->CalculateTotalError(tensor);
 

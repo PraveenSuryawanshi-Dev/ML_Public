@@ -67,7 +67,7 @@ void NeuralNetwork::Layer::BackPropagation(NeuralNetwork::Layer * previousLayer,
 
 				double t1 = -(tensor.GetValue(dimension) - _m_Neurons[currentNeuronIndex]->GetOutput());
 
-				double t2 = _m_Neurons[currentNeuronIndex]->GetOutput() * (1 - _m_Neurons[currentNeuronIndex]->GetOutput());
+				double t2 = _m_Neurons[currentNeuronIndex]->GetOutput() * ( 1 - _m_Neurons[currentNeuronIndex]->GetOutput());
 
 
 				for (size_t currentNeuronWeightIndex = 0; currentNeuronWeightIndex < _m_Neurons[currentNeuronIndex]->GetWeightSize(); currentNeuronWeightIndex++)
