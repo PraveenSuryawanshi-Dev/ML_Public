@@ -17,6 +17,7 @@ void NeuralNetwork::Network::Add(NeuralNetwork::Layer *layer)
 
 }
 
+
 void NeuralNetwork::Network::LatchInput(Tensor &tensor)
 {
 	NeuralNetwork::TENSOR_DIMENSION dimension = tensor.GetDimension();

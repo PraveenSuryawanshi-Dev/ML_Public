@@ -11,6 +11,7 @@ namespace NeuralNetwork
 {
 	class Neuron;
 
+
 	typedef enum _LAYER_TYPE_
 	{
 		INPUT,

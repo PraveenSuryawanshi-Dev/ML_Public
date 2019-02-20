@@ -46,6 +46,7 @@ namespace NeuralNetwork
 
 		std::vector<std::vector<std::vector<double>>> _m_data;
 	};
+
 }
 
 #endif

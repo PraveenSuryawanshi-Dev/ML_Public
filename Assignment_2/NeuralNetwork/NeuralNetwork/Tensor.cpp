@@ -46,6 +46,7 @@ void NeuralNetwork::Tensor::operator+(double value)
 	}
 }
 
+
 void NeuralNetwork::Tensor::operator*(double scale)
 {
 	for (size_t z = 0; z < _m_dimension.z; z++)

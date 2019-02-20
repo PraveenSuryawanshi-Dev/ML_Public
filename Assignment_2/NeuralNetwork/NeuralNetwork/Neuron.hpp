@@ -9,6 +9,7 @@
 
 namespace NeuralNetwork
 {
+
 	class Neuron
 	{
 	public:

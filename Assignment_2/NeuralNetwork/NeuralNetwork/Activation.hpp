@@ -7,6 +7,7 @@
 
 namespace NeuralNetwork
 {
+
 	typedef enum _ACTIVATION_TYPE_
 	{
 		NONE,

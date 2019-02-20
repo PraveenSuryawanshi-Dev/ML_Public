@@ -27,6 +27,7 @@ void NeuralNetwork::Neuron::Build()
 		_m_TempWeights.push_back(RANDOM(0.0, 1.0));
 	}
 }
+
 void NeuralNetwork::Neuron::LatchInput(double data)
 {
 	_m_output_sum = data;

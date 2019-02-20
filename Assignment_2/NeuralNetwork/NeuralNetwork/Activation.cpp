@@ -26,3 +26,4 @@ double NeuralNetwork::Activation::HyperbolicTangent(double x)
 
 	return num/den;
 }
+ 

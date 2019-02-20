@@ -8,6 +8,7 @@
 
 namespace NeuralNetwork
 {
+
 	class Network
 	{
 	public:

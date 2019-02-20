@@ -101,6 +101,7 @@ size_t NeuralNetwork::Layer::Size()
 	return _m_Neurons.size();
 }
 
+
 NeuralNetwork::Neuron* NeuralNetwork::Layer::GetNeuron(int which)
 {
 	return _m_Neurons.at(which);

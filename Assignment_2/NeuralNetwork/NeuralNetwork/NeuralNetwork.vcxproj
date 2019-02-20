@@ -127,6 +127,7 @@
     <ClInclude Include="Layer.hpp" />
     <ClInclude Include="Network.hpp" />
     <ClInclude Include="Neuron.hpp" />
+    <ClInclude Include="Source.h" />
     <ClInclude Include="Tensor.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
