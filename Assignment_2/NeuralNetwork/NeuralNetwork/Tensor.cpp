@@ -17,6 +17,8 @@ NeuralNetwork::Tensor::Tensor(TENSOR_DIMENSION dimension)
 			for (size_t y = 0; y < _m_dimension.y; y++)
 			{
 				_m_data[z][x].push_back(zero);
+
+				zero++;
 			}
 		}
 	}
@@ -47,7 +49,7 @@ void NeuralNetwork::Tensor::operator+(double value)
 }
 
 
-void NeuralNetwork::Tensor::operator*(double scale)
+void NeuralNetwork::Tensor::operator *(double scale)
 {
 	for (size_t z = 0; z < _m_dimension.z; z++)
 	{
@@ -75,6 +77,85 @@ void NeuralNetwork::Tensor::operator/(double value)
 	}
 }
 
+
+NeuralNetwork::Tensor & NeuralNetwork::Tensor::operator=(Tensor & tensor)
+{
+	double zero = 0.0;
+
+	NeuralNetwork::Tensor outputTensor(NeuralNetwork::TENSOR_DIMENSION{ tensor.GetDimension().x,tensor.GetDimension().y,tensor.GetDimension() .z});
+
+	for (size_t z = 0; z < outputTensor._m_dimension.z; z++)
+	{
+		outputTensor._m_data.push_back(std::vector<std::vector<double>>());
+
+		for (size_t x = 0; x < outputTensor._m_dimension.x; x++)
+		{
+			outputTensor._m_data[z].push_back(std::vector<double>());
+
+			for (size_t y = 0; y < outputTensor._m_dimension.y; y++)
+			{
+				outputTensor._m_data[z][x].push_back(zero);
+			}
+		}
+	}
+
+
+	for (size_t z = 0; z < outputTensor._m_dimension.z; z++)
+	{
+		for (size_t x = 0; x < outputTensor._m_dimension.x; x++)
+		{
+			for (size_t y = 0; y < outputTensor._m_dimension.y; y++)
+			{
+				outputTensor._m_data[z][x][y] = _m_data[z][x][y];
+			}
+		}
+	}
+	
+	return outputTensor;
+}
+
+
+void NeuralNetwork::Tensor::RELU()
+{
+	for (size_t z = 0; z < _m_dimension.z; z++)
+	{
+		for (size_t x = 0; x < _m_dimension.x; x++)
+		{
+			for (size_t y = 0; y < _m_dimension.y; y++)
+			{
+				if (_m_data[z][x][y] <= 0)
+				{
+					_m_data[z][x][y] = 0;
+				}
+				else
+				{
+					_m_data[z][x][y] = _m_data[z][x][y];
+				}
+			}
+		}
+	}
+}
+
+void NeuralNetwork::Tensor::LeakyRelu(double alpha)
+{
+	for (size_t z = 0; z < _m_dimension.z; z++)
+	{
+		for (size_t x = 0; x < _m_dimension.x; x++)
+		{
+			for (size_t y = 0; y < _m_dimension.y; y++)
+			{
+				if (_m_data[z][x][y] <= 0)
+				{
+					_m_data[z][x][y] = alpha* _m_data[z][x][y];
+				}
+				else
+				{
+					_m_data[z][x][y] = _m_data[z][x][y];
+				}
+			}
+		}
+	}
+}
 
 NeuralNetwork::Tensor::~Tensor()
 {

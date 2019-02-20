@@ -35,9 +35,15 @@ namespace NeuralNetwork
 		void operator /(double value);
 
 		friend std::ostream & operator <<(std::ostream &os, const Tensor &tensor);
+
+		Tensor& operator =(Tensor &tensor);
 		
 		//friend std::istream & operator >> (istream &in, Complex &c);
 		
+		void RELU();
+
+		void LeakyRelu(double alpha);
+
 		~Tensor();
 
 	private:
